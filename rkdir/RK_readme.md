@@ -80,11 +80,41 @@ docker run -d --name searxng -p 8080:8080 -v ./searxng:/etc/searxng --restart al
 
 7 sd图片生成
 
-docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -e AUTOMATIC1111_BASE_URL=http://host.docker.internal:7861/ -e ENABLE_IMAGE_GENERATION=True -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -e AUTOMATIC1111_BASE_URL=http://host.docker.internal:7861/ -e ENABLE_IMAGE_GENERATION=True -v open-webui:/app/backend/data --name open-webui_sd --restart always ghcr.io/open-webui/open-webui:main
+
+http://host.docker.internal:7861/ 对应服务地址
+
+
+8 官方
+
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+
+
+本地模型
+
+docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+
+http://127.0.0.1:11434      对应服务地址
 
 cd /home/rkwork/work_place/project/stable-diffusion-webui
 
 ./webui.sh --api --listen
+
+8
+
+对 ollama 服务控制
+```
+systemctl start ollama 
+systemctl stop ollama 
+systemctl status ollama 
+
+```
+启动服务：
+
+    export OLLAMA_HOST=0.0.0.0:11434
+    ollama serve 
+
+    docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -e AUTOMATIC1111_BASE_URL=http://host.docker.internal:7861/ -e ENABLE_IMAGE_GENERATION=True -v open-webui:/app/backend/data --name open-webui_sd --restart always ghcr.io/open-webui/open-webui:main
 
 
 ## others
