@@ -111,6 +111,7 @@ systemctl status ollama
 ```
 启动服务：
 
+    systemctl stop ollama 
     export OLLAMA_HOST=0.0.0.0:11434
     ollama serve 
 
@@ -149,3 +150,14 @@ Custom Search JSON API：
 AIzaSyCiRa0ZsUP5ell6VvoJB9f-jCL0SOYgJ78
 id:
 a13b2b55e8fe145f2
+
+
+### 修改容器内
+
+logo:
+
+docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/app/build/favicon.png d28:/app/backend/static       //这个应该没用
+
+docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/app/build/favicon.png d28:/app/build/static
+
+docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/app/build/favicon.png d28:/app/build
