@@ -118,6 +118,13 @@ systemctl status ollama
     docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -e AUTOMATIC1111_BASE_URL=http://host.docker.internal:7861/ -e ENABLE_IMAGE_GENERATION=True -v open-webui:/app/backend/data --name open-webui_sd --restart always ghcr.io/open-webui/open-webui:main
 
 
+    docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -e AUTOMATIC1111_BASE_URL=http://host.docker.internal:7861/ -e ENABLE_IMAGE_GENERATION=True -v open-webui_t:/app/backend/data --name open-webui_t --restart always ghcr.io/open-webui/open-webui:main
+
+bugs:
+
+    启动后，页面一直刷新，将浏览器中的缓存登录信息删除掉
+
+
 ## others
 
 1 更新镜像版本
@@ -156,8 +163,55 @@ a13b2b55e8fe145f2
 
 logo:
 
-docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/app/build/favicon.png d28:/app/backend/static       //这个应该没用
+docker cp b0f:/app dockerapp/
 
-docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/app/build/favicon.png d28:/app/build/static
+// 修改 logo
 
-docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/app/build/favicon.png d28:/app/build
+docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/index.html b0f:/app/build
+
+// 修改 展示提示词
+
+docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/config.json b0f:/app/backend/data
+
+// 修改titile
+
+docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/config.py b0f:/app/backend
+---
+
+
+## 配置网络搜索
+
+https://github.com/open-webui/open-webui/issues/2797
+
+https://github.com/open-webui/open-webui/issues/2824
+
+Something went wrong :/ The content provided is empty. Please ensure that there is text or data present before proceeding.
+
+>docker run -d --name searxng_t -p 8080:8080 -v ./searxng:/etc/searxng --restart always searxng/searxng:latest
+
+地址1：
+
+http://localhost:8080/search?q=<query>
+
+地址2：
+
+host.docker.internal:8080/search?q=<query>
+
+地址3：
+
+http://searxng_t:8080/search?q=<query>
+
+地址4：
+http://host.docker.internal:8080/search?q=<query>
+### 其他
+
+更新镜像
+
+>docker pull ghcr.io/open-webui/open-webui:main
+
+
+open-webui容器情况:
+
+            "ExtraHosts": [
+                "host.docker.internal:host-gateway"
+            ],

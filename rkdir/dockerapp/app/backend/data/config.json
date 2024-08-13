@@ -81,7 +81,7 @@
 		"chunk_overlap": 50,
 		"template": "Use the following context as your learned knowledge, inside <context></context> XML tags.\n<context>\n    [context]\n</context>\n\nWhen answer to user:\n- If you don't know, just say that you don't know.\n- If you don't know when you are not sure, ask for clarification.\nAvoid mentioning that you obtained the information from the context.\nAnd answer according to the language of the user's question.\n\nGiven the context information, answer the query.\nQuery: [query]",
 		"youtube_loader_language": [
-			"en"
+			"zh"
 		],
 		"enable_web_loader_ssl_verification": null,
 		"web": {
@@ -97,8 +97,8 @@
 				"serper_api_key": "",
 				"serply_api_key": "",
 				"tavily_api_key": "",
-				"result_count": 2,
-				"concurrent_requests": 5
+				"result_count": 3,
+				"concurrent_requests": 10
 			}
 		}
 	},

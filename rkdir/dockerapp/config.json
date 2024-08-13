@@ -1,0 +1,114 @@
+{
+	"version": 0,
+	"ui": {
+		"default_locale": "en-US",
+		"prompt_suggestions": [
+			{
+				"title": [
+					"帮助我学习",
+					"大学入学考试词汇"
+				],
+				"content": "请为我准备一个句子，其中包含一个空白处，我将尝试选择最合适的词来填充这个空白。"
+			},
+			{
+				"title": [
+					"给我一些想法",
+					"关于如何处理我的不良情绪"
+				],
+				"content": "我最近心情不好，我该如何调整？"
+			},
+			{
+				"title": [
+					"告诉我一个有趣的事",
+					"关于罗马帝国"
+				],
+				"content": "分享给我一个关于罗马帝国的随机有趣的事"
+			},
+			{
+				"title": [
+					"给我看一段代码片段",
+					"关于网页设计中的一个特性"
+				],
+				"content": "给我展示一段实现网站粘性头部的CSS和JavaScript代码片段。"
+			},
+			{
+				"title": [
+					"解释一下期权交易",
+					"假设我熟悉交易股票。"
+				],
+				"content": "用简单的术语解释期权交易"
+			},
+			{
+				"title": [
+					"克服拖延症",
+					"给我一些建议"
+				],
+				"content": "你能否先询问我哪些情况下我拖延得最厉害，然后给我一些克服拖延的建议？"
+			},
+			{
+				"title": [
+					"语法检查",
+					"为了提高可读性，请重新编写这句话"
+				],
+				"content": "检查以下句子的语法和清晰度,在保持原意的同时，重新编写以提高其可读性。"
+			}
+		]
+	},
+	"image_generation": {
+		"engine": "",
+		"enable": true,
+		"automatic1111": {
+			"base_url": "http://host.docker.internal:7861",
+			"api_auth": "rkwork17527796274@gmail.com:rkwork"
+		},
+		"size": "512x512",
+		"steps": 50
+	},
+	"ollama": {
+		"base_urls": [
+			"http://host.docker.internal:11434"
+		],
+		"enable": true
+	},
+	"rag": {
+		"embedding_engine": "ollama",
+		"embedding_model": "quentinz/bge-large-zh-v1.5:latest",
+		"top_k": 4,
+		"relevance_threshold": 0.0,
+		"enable_hybrid_search": false,
+		"pdf_extract_images": true,
+		"chunk_size": 200,
+		"chunk_overlap": 50,
+		"template": "Use the following context as your learned knowledge, inside <context></context> XML tags.\n<context>\n    [context]\n</context>\n\nWhen answer to user:\n- If you don't know, just say that you don't know.\n- If you don't know when you are not sure, ask for clarification.\nAvoid mentioning that you obtained the information from the context.\nAnd answer according to the language of the user's question.\n\nGiven the context information, answer the query.\nQuery: [query]",
+		"youtube_loader_language": [
+			"zh"
+		],
+		"enable_web_loader_ssl_verification": null,
+		"web": {
+			"search": {
+				"enable": true,
+				"engine": "searxng",
+				"searxng_query_url": "http://searxng:8080/search?q=<query>",
+				"google_pse_api_key": "AIzaSyCiRa0ZsUP5ell6VvoJB9f-jCL0SOYgJ78",
+				"google_pse_engine_id": "a13b2b55e8fe145f2",
+				"brave_search_api_key": "",
+				"serpstack_api_key": "",
+				"serpstack_https": true,
+				"serper_api_key": "",
+				"serply_api_key": "",
+				"tavily_api_key": "",
+				"result_count": 3,
+				"concurrent_requests": 10
+			}
+		}
+	},
+	"openai": {
+		"api_base_urls": [
+			"https://api.openai.com/v1"
+		],
+		"api_keys": [
+			""
+		],
+		"enable": false
+	}
+}
