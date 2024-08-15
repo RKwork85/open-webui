@@ -158,7 +158,7 @@ AIzaSyCiRa0ZsUP5ell6VvoJB9f-jCL0SOYgJ78
 id:
 a13b2b55e8fe145f2
 
-
+0
 ### 修改容器内
 
 logo:
@@ -173,10 +173,10 @@ docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/docker
 
 docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/config.json b0f:/app/backend/data
 
-// 修改titile
+// 修改title
 
 docker cp /home/rkwork/work_place/project/rk_llm/project/open-webui/rkdir/dockerapp/config.py b0f:/app/backend
----
+---  
 
 
 ## 配置网络搜索
